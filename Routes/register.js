@@ -2,12 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Profile = require('../Models');
 const bcrypt = require('bcryptjs')
+const {body, validationResult} = require('express-validator');
 
 router.get("", (req,res)=>{
     
 })
 
-router.post("", async (req,res)=>{
+router.post("",[
+    body('email').isEmail()
+], async (req,res)=>{
 
     const { name, email, password, c_password } = req.body;
 
@@ -15,6 +18,11 @@ router.post("", async (req,res)=>{
         return res.json({message : "Plz fill all fields"});
     }
     
+    const err = validationResult(req);
+    if(!err.isEmpty()){
+        return res.json({message : "Invalid Email"})
+    }
+
     try {
         const emailExist = await Profile.find({email : email});
 
