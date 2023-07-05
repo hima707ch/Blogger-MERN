@@ -3,8 +3,11 @@ const router = express.Router();
 const Profile = require('../Models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {body, validationResult} = require('express-validator');
 
-router.get("", (req,res)=>{
+router.get("",[
+    body('email').isEmail()
+] ,(req,res)=>{
     res.send({mes : "1"})
 });
 
@@ -14,6 +17,11 @@ router.post("", async (req,res)=>{
 
     if(email == "" || password == ""){
         return res.json({message : "Empty fields", log : false})
+    }
+
+    const err = validationResult(req);
+    if(!err.isEmpty()){
+        return res.json({message : "Invalid Email"})
     }
 
     const userExist = await Profile.find({email : email});
