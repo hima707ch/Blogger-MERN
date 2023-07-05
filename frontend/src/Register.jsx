@@ -63,8 +63,8 @@ function Register() {
         <br/><br/>
         <input  name="name" placeholder="Name" onChange={change} value = {registerData.name}/>  <br/><br/>
         <input name = "email" placeholder="Email" onChange={change} value = {registerData.email}/> <br/><br/>
-        <input name = "password" placeholder = "Password" onChange={change} value = {registerData.password}/> <br/><br/>
-        <input name="c_password" placeholder="Confirm Password" onChange={change} value = {registerData.c_password} /> <br/><br/>
+        <input name = "password" type = "password" placeholder = "Password" onChange={change} value = {registerData.password}/> <br/><br/>
+        <input name="c_password" type = "password" placeholder="Confirm Password" onChange={change} value = {registerData.c_password} /> <br/><br/>
         <button className="btn" type="submit" onClick={handleClick}> submit </button>
         <br/><p>or</p><br/>
     
