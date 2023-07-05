@@ -62,7 +62,7 @@ function Login(props) {
                 
                     <br/><br/>
                     <p>Email -- </p><input name="email" onChange={change} value = {loginData.email}/><br/><br/>
-                    <p>Password: -- </p><input name="password" onChange={change} value = {loginData.password}/><br/><br/>
+                    <p>Password: -- </p><input name="password" type = "password" onChange={change} value = {loginData.password}/><br/><br/>
 
                     <button className="btn btn-primary" onClick = {handleClick}>Sign In</button>
                 
