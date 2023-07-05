@@ -5,13 +5,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {body, validationResult} = require('express-validator');
 
-router.get("",[
-    body('email').isEmail()
-] ,(req,res)=>{
+router.get("",(req,res)=>{
     res.send({mes : "1"})
 });
 
-router.post("", async (req,res)=>{
+router.post("", [
+    body('email').isEmail()
+] ,async (req,res)=>{
     try{
     const {email , password} = req.body;
 
